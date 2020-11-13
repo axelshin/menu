@@ -56,12 +56,12 @@ menuLinks.forEach(function(link){
         $this.classList.add('active');
         ul.classList.add('active');
 
-        let ulLeft = ul.getBoundingClientRect().left,
-            ulRight = ul.getBoundingClientRect().right;
-        
+        let ulLeft,
+            ulRight;        
 
         if( menuCurrentDirection == 'left' ){
             ul.classList.add('left');
+            ulRight = ul.getBoundingClientRect().right
             if( ulRight > menuDirectionWidth ){                
                 ul.classList.remove('left');
                 ul.classList.add('right');
@@ -78,12 +78,18 @@ menuLinks.forEach(function(link){
             }
         }
         else {
+
+            ul.classList.add('left');
+            ulLeft = ul.getBoundingClientRect().left;
+            ulRight = ul.getBoundingClientRect().right
+
             if( ulRight < menuDirectionWidth ){
-                ul.classList.add('left')
+                ul.classList.remove('right');
                 menuCurrentDirection = 'left'
             }
-            else{                
-                ul.classList.add('right')
+            else{
+                ul.classList.remove('left');
+                ul.classList.add('right');                
                 menuCurrentDirection = 'right'
             }
         }
