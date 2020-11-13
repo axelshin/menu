@@ -31,6 +31,7 @@ for( let i = menuItems.length - 1; i > -1; i-- ){
     }
     else if( menuItemsWidth > menuWidth ){        
         menuItemsWidth -= item.offsetWidth
+        item.classList.remove('lvl1');
         moreUl.appendChild(item);        
     }
     else{        
@@ -46,10 +47,12 @@ menuLinks.forEach(function(link){
 
         clearTimeout(iit);
         let $this = this,
-            ul = $this.children[1];
+            ul = $this.children[1] ? $this.children[1] : false;
         
         if (!ul) return        
-        
+        if( $this.classList.contains('lvl1') ){
+            menuCurrentDirection = false;
+        }
         $this.classList.add('active');
         ul.classList.add('active');
 

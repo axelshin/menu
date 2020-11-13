@@ -365,6 +365,9 @@ textarea {
     padding: 0.2em 0;
 }
 /**************************/
+body{
+    overflow-y: scroll;
+}
 .menu-wrapper{
     max-width: 980px;
     margin: 0 auto;
