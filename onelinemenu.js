@@ -61,11 +61,11 @@ menuLinks.forEach(function(link){
 
         if( menuCurrentDirection == 'left' ){
             ul.classList.add('left');
-            ulRight = ul.getBoundingClientRect().right
+            ulRight = ul.getBoundingClientRect().right;
             if( ulRight > menuDirectionWidth ){                
                 ul.classList.remove('left');
                 ul.classList.add('right');
-                menuCurrentDirection = 'right'
+                menuCurrentDirection = 'right';
             }
         }
         else if ( menuCurrentDirection == 'right' ){
@@ -78,19 +78,20 @@ menuLinks.forEach(function(link){
             }
         }
         else {
-
+            ul.classList.remove('right');
             ul.classList.add('left');
             ulLeft = ul.getBoundingClientRect().left;
-            ulRight = ul.getBoundingClientRect().right
+            ulRight = ul.getBoundingClientRect().right;
 
-            if( ulRight < menuDirectionWidth ){
-                ul.classList.remove('right');
-                menuCurrentDirection = 'left'
-            }
-            else{
+            if( ulRight > menuDirectionWidth ){
                 ul.classList.remove('left');
-                ul.classList.add('right');                
+                ul.classList.add('right');
                 menuCurrentDirection = 'right'
+            }
+            else if ( ulLeft < 0 ){
+                ul.classList.remove('right');
+                ul.classList.add('left');
+                menuCurrentDirection = 'left'
             }
         }
     });
@@ -103,7 +104,7 @@ menuLinks.forEach(function(link){
         iit = setTimeout(function(){
             ul.classList.remove('active');
             $this.classList.remove('active');
-        }, 500)
+        }, 300)
         
     });
 });
